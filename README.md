@@ -19,7 +19,6 @@ Existing specifications define how to produce proofs. This document defines the 
 
 It does not define new cryptographic algorithms. It does not modify existing container specifications. It does not mandate specific suites. It provides the missing architectural layer between algorithm selection and operational procedure.
 
----
 
 ## 1. Introduction
 
@@ -68,7 +67,6 @@ This document covers:
 - **Auditors and compliance officers:** Verifier Policy (Section 4.2), Evidence Preservation (Section 4.4), Evaluation Framework (Section 5), Stakeholder Guidance (Section 10)
 - **Everyone:** Catastrophic Dual Break Response (Section 4.5)
 
----
 
 ## 2. Terminology
 
@@ -131,7 +129,6 @@ This document covers:
 **Catastrophic Dual Break**
 : A scenario in which both a classical assumption and a post-quantum assumption protecting the same object fail—whether simultaneously, in close succession, or by a single technique effective against both.
 
----
 
 ## 3. Design Principles
 
@@ -158,7 +155,6 @@ A proof is only as durable as the byte-for-byte reconstruction of what was signe
 **P7 — The reference architecture is container-agnostic; the bindings are container-specific.**
 The patterns described in this document apply regardless of container format. Specific syntax and protocol details vary by ecosystem. This document treats all major containers as first-class citizens and actively solicits binding specifications from their communities.
 
----
 
 ## 4. Universal Patterns
 
@@ -270,7 +266,6 @@ An object whose proofs are broken has lost provable non-repudiation going forwar
 **An explicit limit:**
 This pattern does not prevent harm from a dual break—it cannot. Objects depending solely on cryptographic authenticity, with no independent witnessing and no hash-based fallback, will lose that property if both assumptions fail. What this pattern achieves is narrower: the *cost* is substantially reduced, and the *response* is substantially de-panicked, by building independent-evidence and hash-based-fallback habits before they are needed, as routine operational practice.
 
----
 
 ## 5. Continuity Evaluation Framework
 
@@ -304,7 +299,6 @@ The framework does not prescribe a passing threshold. It requires that:
 
 *This section will be populated with representative assessments of deployed systems (Sigstore, DNSSEC, W3C Data Integrity deployments) as community contributions are received.*
 
----
 
 ## 6. Container Bindings
 
@@ -396,7 +390,6 @@ This section demonstrates how the universal patterns manifest in each major ecos
 
 **Existing specifications:** [[RFC6962]], Rekor, Trillian.
 
----
 
 ## 7. Shared Infrastructure
 
@@ -432,7 +425,6 @@ A companion deliverable to this document, accepting contributions from any imple
 
 A test vector exercising a previously unaddressed edge case is a first-class contribution.
 
----
 
 ## 8. Threat Model
 
@@ -448,7 +440,6 @@ A test vector exercising a previously unaddressed edge case is a first-class con
 | Catastrophic dual break | Both classical and post-quantum assumptions fail | Independent evidence fallback; hash-based hedging; institutional attestation (Section 4.5) |
 | Supply chain compromise | Shared component used by multiple suites compromised | Diversification of implementation dependencies |
 
----
 
 ## 9. Operational Deployment Considerations
 
@@ -462,7 +453,6 @@ A test vector exercising a previously unaddressed edge case is a first-class con
 
 **Operational metrics:** Monitor: percentage of objects with only `deprecated` proofs, verifier failures due to unrecognized algorithms, suite status registry changes, canonicalization mismatches, proof set size approaching transport limits.
 
----
 
 ## 10. Stakeholder Guidance
 
@@ -477,7 +467,6 @@ A test vector exercising a previously unaddressed edge case is a first-class con
 | **Library / Platform Maintainers** | Adoption through tooling | Support multi-proof objects natively; surface suite status automatically; provide re-anchoring utilities; publish canonicalization conformance results |
 | **Standards Bodies** | Ecosystem-wide interoperability | Coordinate algorithm identifiers across containers; align suite status registries; publish container binding specifications; contribute test vectors |
 
----
 
 ## 11. Living Document Process
 
@@ -491,7 +480,6 @@ This document evolves continuously rather than being finalized once.
 
 **Coordination:** Independent of but coordinated with W3C VCWG, IETF JOSE/COSE/LAMPS, W3C WebAuthn WG, ISO/IEC JTC 1/SC 17 and SC 27, NIST Cryptographic Technology Group, IETF DNSOP, CNCF/Sigstore.
 
----
 
 ## 12. Security and Privacy Considerations
 
@@ -505,7 +493,6 @@ This document evolves continuously rather than being finalized once.
 
 **Announcement timing:** Public announcement of `broken` status may accelerate attacks. Coordinated-disclosure model SHOULD allow a notification window for major relying parties before public announcement.
 
----
 
 ## 13. Acknowledgements
 
@@ -515,7 +502,6 @@ The editor thanks: Tokachi Kamimura for migration semantics and operational patt
 
 Additional contributors from JOSE, COSE, X.509, WebAuthn, DNSSEC, firmware signing, and transparency log communities are explicitly sought to expand the container bindings (Section 6) and test vectors (Section 7.3).
 
----
 
 ## References
 
@@ -546,7 +532,7 @@ Additional contributors from JOSE, COSE, X.509, WebAuthn, DNSSEC, firmware signi
 - [[VC-FORGERY-DEFENSE]]: Verifiable Credentials Forgery Defense
 - [[DID-TRAIL]]: did:trail DID Method
 
----
+
 
 ## Appendix A: Diagrams
 
