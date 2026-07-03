@@ -19,7 +19,6 @@ It is not a standard for any single container format. It is a universal pattern 
 
 This document does not define new cryptographic algorithms, does not modify existing container specifications, and does not mandate specific suites. It provides the missing operational layer: when to dual-proof, how verifiers should behave during transitions, how to preserve evidence when algorithms break, and what to do when multiple assumptions fail simultaneously.
 
----
 
 ## Table of Contents
 
@@ -52,7 +51,6 @@ This document does not define new cryptographic algorithms, does not modify exis
 11. [Security and Privacy Considerations](#security-and-privacy-considerations)
 12. [Acknowledgements](#acknowledgements)
 
----
 
 ## 1. Introduction
 
@@ -87,7 +85,7 @@ This document covers:
 - **Auditors and compliance officers** should focus on the Verifier Policy (Section 4.2), Evidence Preservation (Section 4.4), and Stakeholder Guidance (Section 9)
 - **Everyone** should read the Catastrophic Dual Break Response (Section 4.5)
 
----
+
 
 ## 2. Terminology
 
@@ -128,7 +126,7 @@ This document covers:
 **Harvest-Now-Decrypt-Later (HNDL)**
 : An adversary strategy of recording protected material today for future attack once sufficient capability becomes available. The signature analogue is "harvest-now-forge-later": recording signed objects today to forge signatures once the algorithm is broken.
 
----
+
 
 ## 3. Design Principles
 
@@ -155,7 +153,7 @@ A proof is only as durable as the byte-for-byte reconstruction of what was signe
 **P7 — The framework is container-agnostic; the bindings are container-specific.**
 The patterns described in this document apply regardless of the container format. The specific syntax, data model, and protocol details vary by ecosystem. This document treats all major containers as first-class citizens and actively solicits binding specifications from their respective communities.
 
----
+
 
 ## 4. The Universal Pattern Language
 
@@ -270,7 +268,7 @@ Witnessing does not replace cryptographic proofs for establishing *who* issued t
 **An explicit limit:**
 This pattern does not prevent harm from a dual break—it cannot. Objects that depended *solely* on cryptographic authenticity, with no independent witnessing and no hash-based fallback, will lose that property if both assumptions fail, and no process can retroactively restore it. What this pattern achieves is narrower: the *cost* of a dual break is substantially reduced, and the *response* is substantially de-panicked, by building independent-evidence and hash-based-fallback habits before they are needed, as routine operational practice.
 
----
+
 
 ## 5. Container Bindings
 
@@ -428,7 +426,6 @@ Transparency logs are both a consumer of continuity patterns (the log itself mus
 **Log migration:**
 When a log transitions algorithms, it follows the same patterns as other containers. The log SHOULD maintain parallel Signed Tree Heads (old algorithm + new algorithm) during the transition window. Log clients SHOULD verify both. Historical log entries SHOULD be re-anchored by including them in new log entries signed under the new algorithm, creating a chain of log-based custody.
 
----
 
 ## 6. Shared Infrastructure
 
@@ -476,7 +473,6 @@ This document maintains, as a companion deliverable, a shared corpus of test vec
 
 Test vectors are accepted from any implementation, regardless of ecosystem or organization, subject to review for correctness and relevance. A test vector contribution that exercises a previously unaddressed edge case is treated as a first-class contribution to this document.
 
----
 
 ## 7. Threat Model
 
@@ -494,7 +490,6 @@ This document treats the following threats as within scope for continuity planni
 | Catastrophic dual break | Both classical and post-quantum assumptions fail simultaneously | Independent evidence fallback; hash-based proof hedging; institutional attestation (Section 4.5) |
 | Supply chain compromise | Shared implementation component used by multiple suites compromised | Diversification of implementation dependencies; independent implementation verification |
 
----
 
 ## 8. Operational Deployment Considerations
 
@@ -518,7 +513,6 @@ Deployments SHOULD monitor and alert on:
 - Canonicalization mismatches (potential latent divergence)
 - Proof set size approaching transport budget limits
 
----
 
 ## 9. Stakeholder Guidance
 
@@ -535,7 +529,6 @@ This section provides role-specific guidance, independent of container ecosystem
 | **Library / Platform Maintainers** | Enabling adoption through tooling | Support multi-proof objects natively; surface suite status from registry automatically; provide re-anchoring utilities; publish canonicalization conformance test results |
 | **Standards Bodies** | Ensuring ecosystem-wide interoperability | Coordinate algorithm identifiers across containers where possible; align suite status registries; publish container binding specifications; contribute test vectors |
 
----
 
 ## 10. Living Document Process
 
@@ -564,7 +557,7 @@ This document coordinates with, but is independent of:
 - IETF DNS Operations Working Group (DNSSEC binding)
 - Cloud Native Computing Foundation / Sigstore (firmware signing, transparency log bindings)
 
----
+
 
 ## 11. Security and Privacy Considerations
 
@@ -583,7 +576,6 @@ The suite status registry (Section 6.1) is a trust root. Its integrity, availabi
 **Algorithm announcement timing:**
 Public announcement of a `broken` suite status may accelerate attacks against objects that have not yet been re-anchored. The coordinated-disclosure model (Section 4.5, item 4) SHOULD account for a window during which major relying parties are notified before public announcement, consistent with standard vulnerability disclosure practices.
 
----
 
 ## 12. Acknowledgements
 
@@ -593,7 +585,7 @@ The editor thanks: Tokachi Kamimura for migration semantics and operational patt
 
 Additional contributors from JOSE, COSE, X.509, WebAuthn, DNSSEC, firmware signing, and transparency log communities are explicitly sought to expand the container bindings in Section 5 and the test vectors in Section 6.3.
 
----
+
 
 ## References
 
