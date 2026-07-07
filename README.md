@@ -6,8 +6,8 @@
 
 **Status:** CG-DRAFT  
 **Editors:** Amir Hameed Mir (Sirraya Lab)  
-**Repository:** w3c-cg/cryptographic-continuity  
-**Latest Draft:** https://w3c-cg.github.io/cryptographic-continuity
+
+
 
 ---
 
